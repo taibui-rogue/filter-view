@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import vn.rogue.filterview.ChipView
-import vn.rogue.filterview.SimpleChipAdapter
+import vn.rogue.filterview.ChipAdapterImpl
 
 
 
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         data.add("Fifth Item")
         data.add("Sixth Item")
         data.add("Seventh Item")
-        val adapter = SimpleChipAdapter(data)
+        val adapter = ChipAdapterImpl(data)
         cvTag.setAdapter(adapter)
     }
 }

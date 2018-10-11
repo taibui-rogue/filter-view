@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import java.util.*
 
-class SimpleChipAdapter(search_data: ArrayList<Any>) : ChipAdapter() {
+class ChipAdapterImpl(searchData: ArrayList<Any>) : ChipAdapter() {
 
     private var searchData = ArrayList<Any>()
     private var chips = ArrayList<Any>()
@@ -16,8 +16,8 @@ class SimpleChipAdapter(search_data: ArrayList<Any>) : ChipAdapter() {
         get() = searchData.size
 
     init {
-        this.searchData = search_data
-        this.data = search_data
+        this.searchData = searchData
+        this.data = searchData
     }
 
     override fun getItem(pos: Int): Any {
