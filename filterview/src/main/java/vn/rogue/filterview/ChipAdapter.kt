@@ -4,11 +4,11 @@ import android.content.Context
 import android.view.View
 import java.util.*
 
-abstract class ChipAdapter {
+abstract class ChipAdapter<T: MatchByKeywords> {
 
-    private var chipView: ChipView? = null
+    private var chipView: ChipView<T>? = null
 
-    var data = ArrayList<Any>()
+    var data = ArrayList<T>()
 
     abstract val count: Int
     abstract fun getItem(pos: Int): Any
@@ -17,7 +17,7 @@ abstract class ChipAdapter {
     abstract fun createSearchView(context: Context, isChecked: Boolean, pos: Int): View
     abstract fun createChip(context: Context, pos: Int): View
 
-    fun setChipView(chipView: ChipView) {
+    fun setChipView(chipView: ChipView<T>) {
         this.chipView = chipView
     }
 

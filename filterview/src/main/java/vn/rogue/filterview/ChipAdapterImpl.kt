@@ -7,10 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import java.util.*
 
-class ChipAdapterImpl(searchData: ArrayList<Any>) : ChipAdapter() {
+class ChipAdapterImpl<T : MatchByKeywords>(searchData: ArrayList<T>) : ChipAdapter<T>() {
 
-    private var searchData = ArrayList<Any>()
-    private var chips = ArrayList<Any>()
+    private var searchData = ArrayList<T>()
+    private var chips = ArrayList<T>()
 
     override val count: Int
         get() = searchData.size
@@ -31,7 +31,7 @@ class ChipAdapterImpl(searchData: ArrayList<Any>) : ChipAdapter() {
     override fun createSearchView(context: Context, isChecked: Boolean, pos: Int): View {
         val view = View.inflate(context, R.layout.item_search, null)
         val cbCheck = view.findViewById<CheckBox>(R.id.cbCheck)
-        cbCheck.text = searchData[pos] as String
+        cbCheck.text = searchData[pos].toString()
         cbCheck.isChecked = isChecked
         cbCheck.setOnCheckedChangeListener { _, b ->
             if (b) {
@@ -48,7 +48,7 @@ class ChipAdapterImpl(searchData: ArrayList<Any>) : ChipAdapter() {
     override fun createChip(context: Context, pos: Int): View {
         val view = View.inflate(context, R.layout.tag, null)
         val tvChip = view.findViewById<TextView>(R.id.tvChip)
-        tvChip.text = searchData[pos] as String
+        tvChip.text = searchData[pos].toString()
         val ivClose = view.findViewById<ImageView>(R.id.ivClose)
         ivClose.setOnClickListener {
             chips.remove(searchData[pos])

@@ -7,8 +7,8 @@ import android.widget.ArrayAdapter
 import android.widget.Filter
 import java.util.*
 
-class SearchAdapter(context: Context, private val adapter: ChipAdapter) : ArrayAdapter<String>(context, -1) {
-    private var data = ArrayList<Any>()
+class SearchAdapter<T : MatchByKeywords>(context: Context, private val adapter: ChipAdapter<T>) : ArrayAdapter<T>(context, -1) {
+    private var data = ArrayList<T>()
 
     init {
         this.data = adapter.data
@@ -22,9 +22,9 @@ class SearchAdapter(context: Context, private val adapter: ChipAdapter) : ArrayA
                     results.values = adapter.data
                     results.count = adapter.data.size
                 } else {
-                    val tmp = ArrayList<Any>()
+                    val tmp = ArrayList<T>()
                     for (i in adapter.data.indices) {
-                        if (adapter.data[i].toString().toLowerCase().indexOf(charSequence.toString().toLowerCase()) == 0) {
+                        if (adapter.data[i].match(charSequence.toString())) {
                             tmp.add(adapter.data[i])
                         }
                     }
@@ -35,8 +35,11 @@ class SearchAdapter(context: Context, private val adapter: ChipAdapter) : ArrayA
             }
 
             override fun publishResults(charSequence: CharSequence, filterResults: Filter.FilterResults) {
+//                Log.e("+++", "" + filterResults.values)
+//                if (filterResults.values == null) return
+
                 @Suppress("UNCHECKED_CAST")
-                data = filterResults.values as ArrayList<Any>
+                data = filterResults.values as ArrayList<T>
                 notifyDataSetChanged()
             }
         }

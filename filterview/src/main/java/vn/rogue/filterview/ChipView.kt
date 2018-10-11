@@ -10,13 +10,13 @@ import android.widget.LinearLayout
 import android.widget.ListView
 import com.google.android.flexbox.FlexboxLayout
 
-class ChipView : LinearLayout {
+class ChipView<T : MatchByKeywords> : LinearLayout {
 
     private var flChips: FlexboxLayout? = null
     private var edtSearch: EditText? = null
     private var lsvList: ListView? = null
-    private var adapter: ChipAdapter? = null
-    private var searchAdapter: SearchAdapter? = null
+    private var adapter: ChipAdapter<T>? = null
+    private var searchAdapter: SearchAdapter<T>? = null
 
     constructor(context: Context) : super(context) {
         init(null)
@@ -33,7 +33,7 @@ class ChipView : LinearLayout {
         lsvList = view.findViewById(R.id.lsvList)
     }
 
-    fun setAdapter(adapter: ChipAdapter) {
+    fun setAdapter(adapter: ChipAdapter<T>) {
         this.adapter = adapter
         adapter.setChipView(this)
         searchAdapter = SearchAdapter(context, adapter)
