@@ -28,11 +28,11 @@ class SimpleChipAdapter(search_data: ArrayList<Any>) : ChipAdapter() {
         return chips.contains(searchData[pos])
     }
 
-    override fun createSearchView(context: Context, is_checked: Boolean, pos: Int): View {
+    override fun createSearchView(context: Context, isChecked: Boolean, pos: Int): View {
         val view = View.inflate(context, R.layout.item_search, null)
         val cbCheck = view.findViewById<CheckBox>(R.id.cbCheck)
         cbCheck.text = searchData[pos] as String
-        cbCheck.isChecked = is_checked
+        cbCheck.isChecked = isChecked
         cbCheck.setOnCheckedChangeListener { _, b ->
             if (b) {
                 chips.add(searchData[pos])

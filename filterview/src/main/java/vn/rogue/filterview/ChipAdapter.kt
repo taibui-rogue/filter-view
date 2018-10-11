@@ -14,7 +14,7 @@ abstract class ChipAdapter {
     abstract fun getItem(pos: Int): Any
     abstract fun isSelected(pos: Int): Boolean
 
-    abstract fun createSearchView(context: Context, is_checked: Boolean, pos: Int): View
+    abstract fun createSearchView(context: Context, isChecked: Boolean, pos: Int): View
     abstract fun createChip(context: Context, pos: Int): View
 
     fun setChipView(chipView: ChipView) {
