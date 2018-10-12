@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <vn.rogue.filterview.ChipView
+    <vn.rogue.filterview.FilterView
         android:id="@+id/cvTag"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:search_box="@layout/search_box"/>
 
 </android.support.constraint.ConstraintLayout>

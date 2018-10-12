@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FilterView">
+        <attr name="search_box" format="integer" />
+        <attr name="tags_view" format="integer" />
+        <attr name="list_item" format="integer" />
+    </declare-styleable>
+</resources>

@@ -7,7 +7,7 @@ import android.widget.ArrayAdapter
 import android.widget.Filter
 import java.util.*
 
-class SearchAdapter<T : MatchByKeywords>(context: Context, private val adapter: ChipAdapter<T>) : ArrayAdapter<T>(context, -1) {
+class SearchAdapter<T : MatchByKeywords>(context: Context, private val adapter: TagAdapter<T>) : ArrayAdapter<T>(context, -1) {
     private var data = ArrayList<T>()
 
     init {
