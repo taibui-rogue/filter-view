@@ -74,7 +74,7 @@ class FilterView<T : MatchByKeywords> : LinearLayout {
 
     fun setAdapter(adapter: TagAdapter<T>) {
         this.adapter = adapter
-        adapter.setChipView(this)
+        adapter.setFilterView(this)
         searchAdapter = SearchAdapter(context, adapter)
         lsvList!!.adapter = searchAdapter
         edtSearch!!.addTextChangedListener(object : TextWatcher {
@@ -105,7 +105,7 @@ class FilterView<T : MatchByKeywords> : LinearLayout {
         }
         for (i in 0 until adapter!!.count) {
             if (adapter!!.isSelected(i)) {
-                val v = adapter!!.createChip(context, i)
+                val v = adapter!!.createTag(context, i)
                 fblChips?.addView(v, 0)
             }
         }

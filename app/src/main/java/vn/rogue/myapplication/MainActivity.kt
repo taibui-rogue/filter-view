@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         data.add(Data("Fifth Item", "321456"))
         data.add(Data("Sixth Item", "554433"))
         data.add(Data("Seventh Item", "996633"))
-        val adapter = TagAdapterImpl(data)
+        val adapter = MyAdapter(data)
         cvTag.setAdapter(adapter)
     }
 }
@@ -32,4 +32,14 @@ class Data(val name: String, val key: String): MatchByKeywords {
     override fun toString(): String = name
 
     override fun match(keywords: String): Boolean = match(keywords, key)
+}
+
+
+class MyAdapter(searchData: ArrayList<Data>) : TagAdapterImpl<Data>(searchData) {
+    override val listItemResId: Int
+        get() = super.listItemResId
+
+    override val tagResId: Int
+        get() = R.layout.tag
+
 }

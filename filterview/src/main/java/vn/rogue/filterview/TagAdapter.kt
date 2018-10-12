@@ -15,9 +15,9 @@ abstract class TagAdapter<T: MatchByKeywords> {
     abstract fun isSelected(pos: Int): Boolean
 
     abstract fun createSearchView(context: Context, isChecked: Boolean, pos: Int): View
-    abstract fun createChip(context: Context, pos: Int): View
+    abstract fun createTag(context: Context, pos: Int): View
 
-    fun setChipView(filterView: FilterView<T>) {
+    fun setFilterView(filterView: FilterView<T>) {
         this.filterView = filterView
     }
 

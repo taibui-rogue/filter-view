@@ -7,10 +7,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import java.util.*
 
-class TagAdapterImpl<T : MatchByKeywords>(searchData: ArrayList<T>) : TagAdapter<T>() {
+open class TagAdapterImpl<T : MatchByKeywords>(searchData: ArrayList<T>) : TagAdapter<T>() {
 
     var searchData = ArrayList<T>()
     var tags = ArrayList<T>()
+
+    open val listItemResId get() = R.layout.item_search
+    open val tagResId get() = R.layout.tag
 
     override val count: Int
         get() = searchData.size
@@ -29,7 +32,7 @@ class TagAdapterImpl<T : MatchByKeywords>(searchData: ArrayList<T>) : TagAdapter
     }
 
     override fun createSearchView(context: Context, isChecked: Boolean, pos: Int): View {
-        val view = View.inflate(context, R.layout.item_search, null)
+        val view = View.inflate(context, listItemResId, null)
         val cbCheck = view.findViewById<CheckBox>(R.id.cbCheck)
         cbCheck.text = searchData[pos].toString()
         cbCheck.isChecked = isChecked
@@ -45,8 +48,8 @@ class TagAdapterImpl<T : MatchByKeywords>(searchData: ArrayList<T>) : TagAdapter
         return view
     }
 
-    override fun createChip(context: Context, pos: Int): View {
-        val view = View.inflate(context, R.layout.tag, null)
+    override fun createTag(context: Context, pos: Int): View {
+        val view = View.inflate(context, tagResId, null)
         val tvChip = view.findViewById<TextView>(R.id.tvChip)
         tvChip.text = searchData[pos].toString()
         val ivClose = view.findViewById<ImageView>(R.id.ivClose)
