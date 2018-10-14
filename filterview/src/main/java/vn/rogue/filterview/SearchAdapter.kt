@@ -7,8 +7,8 @@ import android.widget.ArrayAdapter
 import android.widget.Filter
 import java.util.*
 
-class SearchAdapter<T : MatchByKeywords>(context: Context, private val adapter: TagAdapter<T>) : ArrayAdapter<T>(context, -1) {
-    private var data = ArrayList<T>()
+class SearchAdapter(context: Context, private val adapter: TagAdapter) : ArrayAdapter<MatchByKeywords>(context, -1) {
+    private var data = ArrayList<MatchByKeywords>()
 
     init {
         this.data = adapter.data
@@ -22,7 +22,7 @@ class SearchAdapter<T : MatchByKeywords>(context: Context, private val adapter: 
                     results.values = adapter.data
                     results.count = adapter.data.size
                 } else {
-                    val tmp = ArrayList<T>()
+                    val tmp = ArrayList<MatchByKeywords>()
                     for (i in adapter.data.indices) {
                         if (adapter.data[i].match(charSequence.toString())) {
                             tmp.add(adapter.data[i])
@@ -39,7 +39,7 @@ class SearchAdapter<T : MatchByKeywords>(context: Context, private val adapter: 
 //                if (filterResults.values == null) return
 
                 @Suppress("UNCHECKED_CAST")
-                data = filterResults.values as ArrayList<T>
+                data = filterResults.values as ArrayList<MatchByKeywords>
                 notifyDataSetChanged()
             }
         }

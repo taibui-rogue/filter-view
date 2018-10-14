@@ -4,11 +4,11 @@ import android.content.Context
 import android.view.View
 import java.util.*
 
-abstract class TagAdapter<T: MatchByKeywords> {
+abstract class TagAdapter {
 
-    private var filterView: FilterView<T>? = null
+    private var filterView: FilterView? = null
 
-    var data = ArrayList<T>()
+    var data = ArrayList<MatchByKeywords>()
 
     abstract val count: Int
     abstract fun getItem(pos: Int): Any
@@ -17,7 +17,7 @@ abstract class TagAdapter<T: MatchByKeywords> {
     abstract fun createSearchView(context: Context, isChecked: Boolean, pos: Int): View
     abstract fun createTag(context: Context, pos: Int): View
 
-    fun setFilterView(filterView: FilterView<T>) {
+    fun setFilterView(filterView: FilterView) {
         this.filterView = filterView
     }
 

@@ -5,12 +5,11 @@ import android.view.View
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
-import java.util.*
 
-open class TagAdapterImpl<T : MatchByKeywords>(searchData: ArrayList<T>) : TagAdapter<T>() {
+open class TagAdapterImpl(searchData: ArrayList<MatchByKeywords>) : TagAdapter() {
 
-    var searchData = ArrayList<T>()
-    var tags = ArrayList<T>()
+    var searchData = ArrayList<MatchByKeywords>()
+    var tags = ArrayList<MatchByKeywords>()
 
     open val listItemResId get() = R.layout.item_search
     open val tagResId get() = R.layout.tag

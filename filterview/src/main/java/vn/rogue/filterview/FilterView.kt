@@ -12,13 +12,13 @@ import android.widget.ListView
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayout
 
-class FilterView<T : MatchByKeywords> : LinearLayout {
+class FilterView : LinearLayout {
 
     private var fblChips: FlexboxLayout? = null
     private var edtSearch: EditText? = null
     private var lsvList: ListView? = null
-    private var adapter: TagAdapter<T>? = null
-    private var searchAdapter: SearchAdapter<T>? = null
+    private var adapter: TagAdapter? = null
+    private var searchAdapter: SearchAdapter? = null
 
     constructor(context: Context) : super(context) {
         init(null)
@@ -72,7 +72,7 @@ class FilterView<T : MatchByKeywords> : LinearLayout {
         attributes.recycle()
     }
 
-    fun setAdapter(adapter: TagAdapter<T>) {
+    fun setAdapter(adapter: TagAdapter) {
         this.adapter = adapter
         adapter.setFilterView(this)
         searchAdapter = SearchAdapter(context, adapter)
